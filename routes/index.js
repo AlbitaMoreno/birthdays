@@ -16,7 +16,7 @@ router.get("/", function (req, res, next) {
   FROM
       "People"
   ORDER BY
-      day_b ASC `,
+      day_b, month_b `,
       {
         model: models.Person
       }
