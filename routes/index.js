@@ -10,9 +10,7 @@ router.get("/", function(req, res, next) {
           name,
           birth_date,
           EXTRACT(YEAR FROM age(birth_date)) AS age,
-          date_part(DAY FROM brith_date) AS day_b,
-          date_part(MONTH FROM birth_date) AS month_b,
-          CONCAT(day_b, '-', month_b) as fecha
+          (EXTRACT('day' FROM birth_date) || '-' || EXTRACT('month' FROM birth_date)) as fecha
       FROM
           "People"
       ORDER BY
@@ -22,7 +20,7 @@ router.get("/", function(req, res, next) {
       }
     )
     .then(function(people) {
-      res.render("index", { title: "Celebrities, ordered proximity", people: people });
+      res.render("index", { title: "Celebrities, ordered by proximity", people: people });
     });
 });
 
