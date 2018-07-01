@@ -14,7 +14,7 @@ router.get("/", function (req, res, next) {
   FROM
       "People"
   ORDER BY
-      fecha`,
+      fecha < CURRENT_DATE `,
       {
         model: models.Person
       }
