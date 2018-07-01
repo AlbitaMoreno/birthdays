@@ -14,13 +14,13 @@ router.get("/", function (req, res, next) {
   FROM
       "People"
   ORDER BY
-      fecha DESC`,
+      fecha`,
       {
         model: models.Person
       }
     )
     .then(function (people) {
-      res.render("index", { title: "Celebrities, ordered by age", people: people });
+      res.render("index", { title: "Celebrities, ordered by proximity", people: people });
     });
 });
 
