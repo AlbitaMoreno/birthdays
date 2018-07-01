@@ -11,7 +11,7 @@ router.get("/", function (req, res, next) {
       birth_date,
       EXTRACT(YEAR FROM age(birth_date)) AS age,
       date_part(DAY FROM birth_date) AS day_b,
-      date_part(MONTH FROM birth_date) AS month_b,
+      date_part(MONTH FROM birth_date) AS month_b
       
   FROM
       "People"
