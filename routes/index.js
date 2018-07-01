@@ -14,7 +14,7 @@ router.get("/", function (req, res, next) {
   FROM
       "People"
   ORDER BY
-      ABS(DATEDIFF(DATE(fecha), CURDATE())) DESC `,
+      fecha DESC `,
       {
         model: models.Person
       }
