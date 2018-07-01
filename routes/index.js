@@ -10,11 +10,13 @@ router.get("/", function (req, res, next) {
       name,
       birth_date,
       EXTRACT(YEAR FROM age(birth_date)) AS age,
-      (EXTRACT('day' FROM birth_date) || '-' || EXTRACT('month' FROM birth_date)) as fecha
+      EXTRACT('day' FROM birth_date) AS day_b,
+      EXTRACT('month' FROM birth_date) AS month_b
+      (day_b || '-' || month_b ) as fecha
   FROM
       "People"
   ORDER BY
-      fecha ASC `,
+      day_b ASC `,
       {
         model: models.Person
       }
