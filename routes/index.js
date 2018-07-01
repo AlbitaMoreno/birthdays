@@ -10,7 +10,7 @@ router.get("/", function (req, res, next) {
       name,
       birth_date,
       EXTRACT(YEAR FROM age(birth_date)) AS age,
-      (EXTRACT(DAY FROM birth_date) || '-' || EXTRACT(MONTH FROM birth_date)) as fecha
+      (date_part('day' FROM birth_date) || '-' || date_part('month' FROM birth_date)) as fecha
   FROM
       "People"
   ORDER BY
