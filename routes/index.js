@@ -9,18 +9,17 @@ router.get("/", function(req, res, next) {
       `SELECT
           name,
           birth_date,
-          EXTRACT(YEAR FROM age(birth_date)) AS age,
-          (EXTRACT('day' FROM birth_date) || '-' || EXTRACT('month' FROM birth_date)) as fecha
+          EXTRACT(YEAR FROM age(birth_date)) AS age
       FROM
           "People"
       ORDER BY
-          fecha DESC`,
+          birth_date DESC`,
       {
         model: models.Person
       }
     )
     .then(function(people) {
-      res.render("index", { title: "Celebrities, ordered by proximity", people: people });
+      res.render("index", { title: "Celebrities, ordered by age", people: people });
     });
 });
 
